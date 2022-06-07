@@ -1,15 +1,19 @@
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import { Container } from '@mui/system';
 
 export const Sequence = () => {
     return (
-        <Autocomplete
-            disablePortal
-            id="combo-box-demo"
-            options={ songs }
-            sx={{ width: 600 }}
-            renderInput={(params) => <TextField { ...params } label="Canto" />}
-        />
+        <Container
+            maxWidth='sm'
+        >
+            <Autocomplete
+                disablePortal
+                id="combo-box-demo"
+                options={ songs }
+                renderInput={(params) => <TextField { ...params } label="Canto" />}
+            />
+        </Container>
     );
 }
 
