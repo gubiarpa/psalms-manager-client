@@ -2,23 +2,35 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Container } from '@mui/system';
 
-export const Sequence = () => {
+export interface Song {
+    id: number,
+    name: string
+}
+
+export interface SequenceProps {
+    name: string,
+    songs: Song[]
+}
+
+export const Sequence = ({name, songs}: SequenceProps) => {
     return (
         <Container
             maxWidth='sm'
         >
-            <Autocomplete
-                disablePortal
-                id="combo-box-demo"
-                options={ songs }
-                renderInput={(params) => <TextField { ...params } label="Canto" />}
-            />
+            <div className=''>
+                <Autocomplete
+                    disablePortal
+                    id="combo-box-demo"
+                    sx={{ m: 4 }}
+                    options={ songs.map(s => s.name) }
+                    renderInput={(params) => <TextField { ...params } label={name} />}
+                />
+            </div>
         </Container>
     );
 }
-
-// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
-const songs = [
+/*
+const songsDummy = [
     { label: 'A la víctima pascual' },
     { label: 'A nadie demos ocasión de tropiezo' },
     { label: 'A ti levanto mis ojos' },
@@ -34,3 +46,4 @@ const songs = [
     { label: 'Aleluya, bendecid al Señor' },
     { label: 'Aleluya, ya llegó el reino' },
 ];
+*/
