@@ -2,6 +2,14 @@ import { Sequence } from "./Sequence"
 
 export const Page = () => {
 
+    fetch('https://psalm-server.herokuapp.com/api/psalm?from=0&limit=100', {
+        method: 'GET',
+        mode: 'cors'
+    })
+    .then(response => response.json())
+    .then(data => console.log(data));
+    
+
     return (
         <>
             {
