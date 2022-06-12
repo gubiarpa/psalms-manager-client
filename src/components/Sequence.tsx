@@ -1,11 +1,7 @@
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Container } from '@mui/system';
-
-export interface Song {
-    uid: string,
-    name: string
-}
+import { Song } from '../models/Song';
 
 export interface SequenceProps {
     name: string,
