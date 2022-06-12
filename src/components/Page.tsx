@@ -3,11 +3,6 @@ import { Sequence, Song } from "./Sequence"
 
 export const Page = () => {
 
-    // const response = await fetch('')
-    // const { psalms:any } = await response.json();
-            // songs = psalms.map((psalm: Song) => ({ uid: psalm.uid, name: psalm.name }))
-    // console.log(songs)
-
     const [songs, setSongs] = useState<Song[]>([])
 
     useEffect(() => {
@@ -15,27 +10,11 @@ export const Page = () => {
     }, [])
 
     const getPsalms = async() => {
-        const url = `https://psalm-server.herokuapp.com/api/psalm?from=0&limit=222`
+        const url = `https://resucito-manager.herokuapp.com/api/psalm?from=0&limit=222`
         const resp = await fetch(url)
         const { psalms } = await resp.json()
         setSongs(psalms.map( (psalm: any) => ({ uid: psalm.uid, name: psalm.name }) ))
     }
-
-    // const songs: Song[] = []
-
-    // fetch('', {
-    //     method: 'GET',
-    //     mode: 'cors'
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //     console.log(data)
-    //     // songs = data.psalms.map((psalm: any) => {
-
-    //     //     return { uid: psalm.uid, name: psalm.name }
-    //     // })
-    // });
-    
 
     return (
         <>
