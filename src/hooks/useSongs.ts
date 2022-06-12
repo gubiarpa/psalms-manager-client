@@ -9,7 +9,7 @@ export const useSongs = () => {
     useEffect(() => {
         const psalms = getPsalms()
             .then(songs => { setState(songs) })
-    })
+    }, [])
 
     return state
 }
