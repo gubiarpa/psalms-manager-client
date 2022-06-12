@@ -1,20 +1,47 @@
-import { Sequence } from "./Sequence"
+import { useEffect, useState } from "react"
+import { Sequence, Song } from "./Sequence"
 
 export const Page = () => {
 
-    fetch('https://psalm-server.herokuapp.com/api/psalm?from=0&limit=100', {
-        method: 'GET',
-        mode: 'cors'
-    })
-    .then(response => response.json())
-    .then(data => console.log(data));
+    // const response = await fetch('')
+    // const { psalms:any } = await response.json();
+            // songs = psalms.map((psalm: Song) => ({ uid: psalm.uid, name: psalm.name }))
+    // console.log(songs)
+
+    const [songs, setSongs] = useState<Song[]>([])
+
+    useEffect(() => {
+        getPsalms()
+    }, [])
+
+    const getPsalms = async() => {
+        const url = `https://psalm-server.herokuapp.com/api/psalm?from=0&limit=222`
+        const resp = await fetch(url)
+        const { psalms } = await resp.json()
+        setSongs(psalms.map( (psalm: any) => ({ uid: psalm.uid, name: psalm.name }) ))
+    }
+
+    // const songs: Song[] = []
+
+    // fetch('', {
+    //     method: 'GET',
+    //     mode: 'cors'
+    // })
+    // .then(response => response.json())
+    // .then(data => {
+    //     console.log(data)
+    //     // songs = data.psalms.map((psalm: any) => {
+
+    //     //     return { uid: psalm.uid, name: psalm.name }
+    //     // })
+    // });
     
 
     return (
         <>
             {
                 sequences.map(sequence => {
-                    return <Sequence key={sequence.id} name={sequence.name} songs={songs} />
+                    return <Sequence key={sequence.uid} name={sequence.name} songs={songs} />
                 })
             }
         </>
@@ -22,27 +49,12 @@ export const Page = () => {
 }
 
 const sequences = [
-    { id: 1, name: 'Entrada'},
-    { id: 2, name: 'Respuesta 1'},
-    { id: 3, name: 'Respuesta 2'},
-    { id: 4, name: 'Respuesta 3'},
-    { id: 5, name: 'Paz'},
-    { id: 6, name: 'Salida'},
+    { uid: 1, name: 'Entrada'},
+    { uid: 2, name: 'Respuesta 1'},
+    { uid: 3, name: 'Respuesta 2'},
+    { uid: 4, name: 'Respuesta 3'},
+    { uid: 5, name: 'Paz'},
+    { uid: 6, name: 'Salida'},
 ];
 
-const songs = [
-    { id: 1, name: 'A la víctima pascual' },
-    { id: 2, name: 'A nadie demos ocasión de tropiezo' },
-    { id: 3, name: 'A ti levanto mis ojos' },
-    { id: 4, name: 'A ti, Señor, en mi clamor imploro' },
-    { id: 5, name: 'A ti, Señor, levanto mi alma' },
-    { id: 6, name: 'A ti, Señor, se debe la alabanza en Sión' },
-    { id: 7, name: 'Abraham' },
-    { id: 8, name: 'Aclamad al Señor' },
-    { id: 9, name: 'Al despertar' },
-    { id: 10, name: 'Alabad al Señor en el cielo' },
-    { id: 11, name: 'Alegría, ha nacido el salvador' },
-    { id: 12, name: 'Aleluya, alabad al Señor' },
-    { id: 13, name: 'Aleluya, bendecid al Señor' },
-    { id: 14, name: 'Aleluya, ya llegó el reino' },
-];
+

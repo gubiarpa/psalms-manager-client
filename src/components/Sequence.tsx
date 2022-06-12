@@ -3,7 +3,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { Container } from '@mui/system';
 
 export interface Song {
-    id: number,
+    uid: string,
     name: string
 }
 
