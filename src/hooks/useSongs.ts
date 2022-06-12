@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Song } from "../components/Sequence";
+import { Song } from "../models/Song";
 import { getPsalms } from "../services/getPsalms";
 
 export const useSongs = () => {

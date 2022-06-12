@@ -1,4 +1,4 @@
-import { Song } from "../components/Sequence"
+import { Song } from "../models/Song";
 
 export const getPsalms = async() : Promise<Song[]>   => {
 
