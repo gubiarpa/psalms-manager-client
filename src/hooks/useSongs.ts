@@ -7,7 +7,7 @@ export const useSongs = () => {
     const [state, setState] = useState<Song[]>([]);
 
     useEffect(() => {
-        const psalms = getPsalms()
+        getPsalms()
             .then(songs => { setState(songs) })
     }, [])
 
