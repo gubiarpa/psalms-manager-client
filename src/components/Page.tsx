@@ -1,20 +1,18 @@
-import { useEffect, useState } from "react"
+import { useSongs } from "../hooks/useSongs"
+import { getPsalms } from "../services/getPsalms"
 import { Sequence, Song } from "./Sequence"
 
 export const Page = () => {
 
-    const [songs, setSongs] = useState<Song[]>([])
+    
+    const songs = useSongs()
 
-    useEffect(() => {
-        getPsalms()
-    }, [])
-
-    const getPsalms = async() => {
-        const url = `https://resucito-manager.herokuapp.com/api/psalm?from=0&limit=222`
-        const resp = await fetch(url)
-        const { psalms } = await resp.json()
-        setSongs(psalms.map( (psalm: any) => ({ uid: psalm.uid, name: psalm.name }) ))
-    }
+    // const getPsalms = async() => {
+    //     const url = `https://resucito-manager.herokuapp.com/api/psalm?from=0&limit=222`
+    //     const resp = await fetch(url)
+    //     const { psalms } = await resp.json()
+    //     setSongs(psalms.map( (psalm: any) => ({ uid: psalm.uid, name: psalm.name }) ))
+    // }
 
     return (
         <>
