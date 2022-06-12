@@ -1,18 +1,9 @@
 import { useSongs } from "../hooks/useSongs"
-import { getPsalms } from "../services/getPsalms"
-import { Sequence, Song } from "./Sequence"
+import { Sequence } from "./Sequence"
 
 export const Page = () => {
 
-    
     const songs = useSongs()
-
-    // const getPsalms = async() => {
-    //     const url = `https://resucito-manager.herokuapp.com/api/psalm?from=0&limit=222`
-    //     const resp = await fetch(url)
-    //     const { psalms } = await resp.json()
-    //     setSongs(psalms.map( (psalm: any) => ({ uid: psalm.uid, name: psalm.name }) ))
-    // }
 
     return (
         <>
