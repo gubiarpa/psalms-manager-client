@@ -14,7 +14,7 @@ export const Sequence = ({name, songs}: SequenceProps) => {
             maxWidth='sm'
         >
             <Autocomplete
-                freeSolo
+                freeSolo={false}
                 id="combo-box-demo"
                 sx={{ m: 4 }}
                 options={ songs.map(s => s.name) }
